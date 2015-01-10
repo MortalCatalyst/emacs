@@ -1,3 +1,6 @@
+;;; package -- summary
+;;; Commentary:
+;;; Code: 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -42,4 +45,15 @@
 (global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
 
 ;;; magit
+(add-to-list 'load-path "/home/sayth/.emacs.d/elpa/git-commit-mode")
+(add-to-list 'load-path "/home/sayth/.emacs.d/elpa/magit")
+(eval-after-load 'info
+  '(progn (info-initialize)
+          (add-to-list 'Info-directory-list "/home/sayth/.emacs.d/elpa/magit")))
 (require 'magit)
+(require 'graphene)
+(require 'sr-speedbar)
+
+(provide '.emacs)
+;;; .emacs ends here
+
