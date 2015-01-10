@@ -16,13 +16,10 @@
  ;; If there is more than one, they won't work right.
  )
 
-(require 'package) ;; You might already have this line
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this line
+(require 'cask "/home/sayth/.cask/cask.el")
+(cask-initialize)
+(require 'pallet)
+(pallet-mode t)
 
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "/home/sayth/ccl/lx86cl64") 
