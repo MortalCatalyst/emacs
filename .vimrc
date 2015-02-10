@@ -78,6 +78,7 @@ colorscheme flattr
 nnoremap <silent> <space>d :exec 'colorscheme' (g:colors_name ==# 'flattr') ? 'calmar256-light' : 'flattr'<CR>
 
 set number
+set grepprg=ack
 set foldmethod=indent
 set foldlevel=99
 set smartindent
