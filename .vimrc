@@ -119,8 +119,6 @@ autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
 autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr> 
 " Ctrlp
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
 
 " Using buffergator and CTRLP settings from this article https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
 
