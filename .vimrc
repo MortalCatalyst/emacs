@@ -93,6 +93,8 @@ set splitbelow
 set splitright
 set lines=50 columns=100
 
+" set current directory to the current file using ,cd
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 " Visual paste switch
 " http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
 nnoremap <F4> :set invpaste paste?<CR>
@@ -156,7 +158,7 @@ nmap <leader>jj :BuffergatorMruCyclePrev<cr>
 " Go to the next buffer open
 nmap <leader>kk :BuffergatorMruCycleNext<cr>
 
-" View the entire list of buffers open
+" View the entire list of buffers oen
 nmap <leader>bl :BuffergatorOpen<cr>
 
 " Shared bindings from Solution #1 from earlier
