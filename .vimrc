@@ -28,7 +28,6 @@ VAMActivate vim-airline
 VAMActivate HTML_AutoCloseTag
 VAMActivate Python-mode-klen
 VAMActivate delimitMate 
-VAMActivate Zenburn
 VAMActivate seoul256
 VAMActivate The_NERD_tree
 VAMActivate Emmet
@@ -44,19 +43,19 @@ VAMActivate Syntastic
 VAMActivate github:kien/ctrlp.vim
 VAMActivate github:tpope/vim-fugitive
 VAMActivate calmar256-lightdark
-VAMActivate github:jmcomets/vim-pony
 VAMActivate YouCompleteMe 
-VAMActivate github:actionshrimp/vim-xpath
 VAMActivate github:dirkk/vim-xquery-syntax
 VAMActivate github:actionshrimp/vim-xpath
 VAMActivate github:othree/html5.vim 
 VAMActivate github:airblade/vim-gitgutter
-VAMActivate github:gorodinskiy/vim-coloresque
 VAMActivate github:cakebaker/scss-syntax.vim
 VAMActivate github:flazz/vim-colorschemes
-VAMActivate github:JulesWang/css.vim
 VAMActivate github:plasticboy/vim-markdown
 VAMActivate Buffergator 
+VAMActivate github:maksimr/vim-jsbeautify
+VAMActivate snipmate
+VAMActivate github:tomtom/tcomment_vim
+
 " PLugins current not used.
 " VAMActivate Rubytest
 " VAMActivate perlomni
@@ -64,7 +63,6 @@ VAMActivate Buffergator
 " VAMActivate css3
 " VAMActivate css_color
 " VAMActivate mojo
-" VAMActivate snipmate
 " VAMActivate nimrod
 " VAMActivate The_NERD_Commenter
 " VAMActivate genutils
@@ -107,6 +105,18 @@ inoremap zz <ESC>
 " nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 " nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
+" Beautify https://github.com/maksimr/vim-jsbeautify
+map <c-f> :call JsBeautify()<cr>
+  " or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+  " for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+  " for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr> 
 " Ctrlp
 " let g:ctrlp_map = '<c-p>'
 " let g:ctrlp_cmd = 'CtrlP'
