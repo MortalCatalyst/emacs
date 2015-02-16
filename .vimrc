@@ -17,6 +17,7 @@ fun! SetupVAM()
 endfun
 
 call SetupVAM()
+
 VAMActivate matchit.zip vim-addon-commenting
 VAMActivate perl
 VAMActivate w3m
@@ -27,10 +28,11 @@ VAMActivate rails
 VAMActivate vim-airline
 VAMActivate HTML_AutoCloseTag
 VAMActivate Python-mode-klen
-VAMActivate delimitMate 
+VAMActivate delimitMate
 VAMActivate seoul256
 VAMActivate The_NERD_tree
 VAMActivate Emmet
+" https://github.com/rstacruz/sparkup/ todo later
 VAMActivate Gundo
 VAMActivate jinja
 VAMActivate vim-autopep8
@@ -43,18 +45,26 @@ VAMActivate Syntastic
 VAMActivate github:kien/ctrlp.vim
 VAMActivate github:tpope/vim-fugitive
 VAMActivate calmar256-lightdark
-VAMActivate YouCompleteMe 
+VAMActivate YouCompleteMe
 VAMActivate github:dirkk/vim-xquery-syntax
 VAMActivate github:actionshrimp/vim-xpath
-VAMActivate github:othree/html5.vim 
+VAMActivate github:othree/html5.vim
 VAMActivate github:airblade/vim-gitgutter
 VAMActivate github:cakebaker/scss-syntax.vim
 VAMActivate github:flazz/vim-colorschemes
 VAMActivate github:plasticboy/vim-markdown
-VAMActivate Buffergator 
+VAMActivate Buffergator
 VAMActivate github:maksimr/vim-jsbeautify
 VAMActivate snipmate
 VAMActivate github:tomtom/tcomment_vim
+VAMActivate github:ap/vim-css-color
+VAMActivate github:tpope/vim-unimpaired
+VAMActivate github:KabbAmine/zeavim.vim
+VAMActivate vim-snippets
+VAMActivate github:hail2u/vim-css3-syntax
+VAMActivate github:groenewege/vim-less
+VAMActivate github:nathanaelkane/vim-indent-guides
+VAMActivate github:tpope/vim-sleuth
 
 " PLugins current not used.
 " VAMActivate Rubytest
@@ -73,8 +83,7 @@ VAMActivate github:tomtom/tcomment_vim
 " VAMActivate vim-snippets
 
 set t_Co=256
-colorscheme flattr 
-
+colorscheme flattr
 nnoremap <silent> <space>d :exec 'colorscheme' (g:colors_name ==# 'flattr') ? 'calmar256-light' : 'flattr'<CR>
 
 set number
@@ -82,6 +91,9 @@ set grepprg=ack
 set foldmethod=indent
 set foldlevel=99
 set smartindent
+set autoindent
+set incsearch
+set hlsearch
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -92,7 +104,7 @@ set wildmode=list:longest,full
 set splitbelow
 set splitright
 set lines=50 columns=100
-
+nmap <C-N><C-N> :set invnumber<CR>
 " set current directory to the current file using ,cd
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 " Visual paste switch
@@ -101,6 +113,7 @@ nnoremap <F4> :set invpaste paste?<CR>
 set pastetoggle=<F4>
 set showmode
 
+"noremap <F5> XPathSearchPrompt
 " Great article https://danielmiessler.com/blog/enhancements-to-shell-and-vim-productivity/
 inoremap zz <ESC>
 " http://vim.wikia.com/wiki/Resize_splits_more_quickly
@@ -119,9 +132,9 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
 autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr> 
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 " Ctrlp
-
+au BufRead,BufNewFile *.md set filetype=markdown
 " Using buffergator and CTRLP settings from this article https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
 
 " Setup some default ignores
@@ -181,7 +194,7 @@ let g:notes_directories = ['~/Documents/Notes']
 
 " YAML frontMatter
 let g:vim_markdown_frontmatter=1
- 
+
 " vmap <C-c> "py
 " nmap <C-c> "pyiw
 " vmap <C-p> "pp
@@ -220,14 +233,14 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 " au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
 "Cycle buffers <F2> and <F3>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
@@ -288,3 +301,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "Stop delays in resolving ruby/jruby
 let g:ruby_path=system('which --skip-tilde ruby')
 " let g:syntastic_quiet_messages = 1
+
+call vundle#end()            " required
+filetype plugin indent on    " required
